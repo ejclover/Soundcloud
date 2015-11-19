@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://connect.soundcloud.com/sdk.js"></script>
+		
+		<script>
+			
+			SC.initialize({
+				
+				client_id:'646bba060a6a4a47c8c70b4047013744'
+				
+				});
+			
+			
+			
+			
+			$(document).ready(function(){
+				var search =$("#searchButton");
+				search.click(function(){
+					var userChoice = $("#genreSearch").val();
+					
+					
+					
+					SC.get('/tracks', {genres: userChoice}, function(tracks) {
+						$(tracks).each(function(index, track){
+							$("#results").append($('<li> '+track.title+' </li>'+'<img src=' + track.artwork_url+'>'));
+						
+						});
+					});
+				});
+			});
+			
+			
+			
+		</script>
+		
+	
+		
+		
+		
+		
+	</head>
+	
+	
+	<body>
+		<h1>This website will help you find songs you like   </h1>
+		
+		<input id="genreSearch" typt="text" placeholder="Select a Genre">
+		<button id="searchButton">Search</button>
+		
+		<ul id="results"></ul>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</html>
